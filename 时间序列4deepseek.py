@@ -94,7 +94,7 @@ data_series = [diff_a, diff_b, diff_ab]
 for ax, title, series in zip(axes, titles, data_series):
     ax.plot(x_values, series, marker="o", markersize=4, linewidth=1.5)
     ax.set_title(title, fontsize=10)
-    ax.set_ylabel("值")  # 统一 Y 轴标签
+    ax.set_ylabel("")  # 统一 Y 轴标签
     ax.yaxis.set_major_formatter(FormatStrFormatter('%.8f'))  # Y 轴保留 8 位小数
     ax.set_xticks(x_values)  # 设置 X 轴刻度
     ax.set_xticklabels(data.columns, rotation=90, fontsize=8)  # X 轴标签垂直显示
@@ -109,7 +109,7 @@ st.pyplot(fig)
 
 # 显示具体数值（横排显示）
 if show_values:
-    st.subheader("具体数值）")
+    st.subheader("具体数值")
 
     # 将数据转换为横排格式，并保留 8 位小数
     df_a = pd.DataFrame({f"时间点 {col}": [diff_a[col]] for col in data.columns}).T.round(8)
