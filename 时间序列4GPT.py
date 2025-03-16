@@ -66,14 +66,14 @@ fig, axes = plt.subplots(3, 1, figsize=(fig_width, 10), sharex=True, sharey=True
 
 # 动态调整 X 轴范围
 x_values = np.arange(len(data.columns)) * x_spacing  # 根据 x_spacing 调整 X 轴范围
-titles = [f"电极 {electrode_a}", f"电极 {electrode_b}", f"电极 {electrode_a} - {electrode_b}"]
+titles = [f" {electrode_a}", f" {electrode_b}", f" {electrode_a} - {electrode_b}"]
 data_series = [diff_a, diff_b, diff_ab]
 
 # 遍历子图，绘制曲线并确保 Y 轴固定
 for ax, title, series in zip(axes, titles, data_series):
     ax.plot(x_values, series, marker="o", markersize=4, linewidth=1.5)
     ax.set_title(title, fontsize=10)
-    ax.set_ylabel("值")  # 统一 Y 轴标签
+    ax.set_ylabel("")  # 统一 Y 轴标签
     ax.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))  # Y 轴保留两位小数
     ax.set_xticks(x_values)  # 设置 X 轴刻度
     ax.set_xticklabels(data.columns, rotation=90, fontsize=8)  # X 轴标签垂直显示
